@@ -1,28 +1,25 @@
 package com.handsome.android.sdk.http.request;
 
-
-import com.handsome.android.sdk.http.builder.BaseRequestBuilder;
-
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
 /**
  * 作者: shuaizhimin
- * 描述:
- * 日期: 2017-02-14
- * 时间: 13:44
+ * 描述: Get Request 构造
+ * 日期: 2017-04-10
+ * 时间: 18:38
  * 版本:
  */
-public class GetRequest extends OkHttpRequest {
-    @Override
-    public RequestBody buildRequestBody(BaseRequestBuilder builder) {
-        return null;
+public class GetRequest extends BaseRequest<GetRequest>{
+
+
+    public GetRequest(String url) {
+        super(url);
     }
 
     @Override
-    public Request buildRequest(BaseRequestBuilder builder, RequestBody requestBody) {
-        Request.Builder reBuilder = new Request.Builder();
-        reBuilder.url(builder.url);
-        return reBuilder.get().build();
+    public Request buildRequest(RequestBody requestBody) {
+        Request.Builder requestBuilder=new Request.Builder();
+        return requestBuilder.get().url(requestParam.getUrl()).tag(requestParam.getTag()).build();
     }
 }
